@@ -1,6 +1,6 @@
 package co.com.retotecnico.certificacion.stepdefinitions;
 
-import co.com.retotecnico.certificacion.tasks.InteractuarChallengingDOM;
+import co.com.retotecnico.certificacion.tasks.SeleccionarCheckboxes;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import net.serenitybdd.annotations.Managed;
@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.WebDriver;
 
-public class ChallengingDOMStepDefinitions {
+public class CheckboxesStepDefinitions {
 
     @Managed(driver = "firefox")
     WebDriver navegador;
@@ -20,13 +20,13 @@ public class ChallengingDOMStepDefinitions {
         leonardo.can(BrowseTheWeb.with(navegador));
     }
 
-    @Given("que Leonardo ingresa a Challenging DOM")
-    public void ingresarChallengingDOM() {
-        leonardo.attemptsTo(InteractuarChallengingDOM.ahora());
+    @Given("que Leonardo accede a la sección Checkboxes")
+    public void accederCheckboxes() {
+        leonardo.attemptsTo(SeleccionarCheckboxes.todos());
     }
 
-    @Then("debería interactuar con los botones correctamente")
-    public void interactuarBotones() {
-        System.out.println("Interacciones completadas en Challenging DOM");
+    @Then("debería marcar todos los checkboxes correctamente")
+    public void validarCheckboxes() {
+        System.out.println("Todos los checkboxes han sido seleccionados.");
     }
 }

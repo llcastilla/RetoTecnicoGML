@@ -1,6 +1,6 @@
 package co.com.retotecnico.certificacion.stepdefinitions;
 
-import co.com.retotecnico.certificacion.tasks.InteractuarChallengingDOM;
+import co.com.retotecnico.certificacion.tasks.InteractuarContextMenu;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import net.serenitybdd.annotations.Managed;
@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.WebDriver;
 
-public class ChallengingDOMStepDefinitions {
+public class ContextMenuStepDefinitions {
 
     @Managed(driver = "firefox")
     WebDriver navegador;
@@ -20,13 +20,13 @@ public class ChallengingDOMStepDefinitions {
         leonardo.can(BrowseTheWeb.with(navegador));
     }
 
-    @Given("que Leonardo ingresa a Challenging DOM")
-    public void ingresarChallengingDOM() {
-        leonardo.attemptsTo(InteractuarChallengingDOM.ahora());
+    @Given("que Leonardo accede a la sección Context Menu")
+    public void accederContextMenu() {
+        leonardo.attemptsTo(InteractuarContextMenu.ahora());
     }
 
-    @Then("debería interactuar con los botones correctamente")
-    public void interactuarBotones() {
-        System.out.println("Interacciones completadas en Challenging DOM");
+    @Then("debería realizar click derecho y aceptar la alerta")
+    public void validarContextMenu() {
+        System.out.println("acción de click derecho y alerta completadas correctamente.");
     }
 }

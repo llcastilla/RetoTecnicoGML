@@ -28,6 +28,6 @@ public class BrokenImagesStepDefinitions {
     @Then("debería identificar correctamente las imágenes rotas y válidas")
     public void validarResultados() {
         // Se valida con el log en consola, si requiere assertion adicional me lo indica
-        System.out.println("\n📌 Validación finalizada correctamente.");
+        System.out.println("validación finalizada correctamente.");
     }
 }
