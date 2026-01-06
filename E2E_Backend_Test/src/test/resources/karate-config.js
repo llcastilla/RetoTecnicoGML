@@ -3,7 +3,6 @@ function fn() {
 
   var config = {
     urlBase: 'https://petstore.swagger.io/v2/',
-    authEndpoint: '/tardeb/api/v1/auth/login_guest',
 
     // Headers base que usarás en todas las peticiones
     headers: {
@@ -11,7 +10,6 @@ function fn() {
       'Accept': 'application/json'
     },
 
-    // Usuarios para posibles tests futuros, aunque aquí solo login guest es necesario
 
 
 

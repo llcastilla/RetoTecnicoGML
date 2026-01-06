@@ -1,5 +1,5 @@
 
-package co.com.bancolombia;
+package co.com.certificacion;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;

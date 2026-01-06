@@ -11,7 +11,7 @@ _Si está familiarizado con Cucumber / Gherkin, la gran diferencia aquí es que 
 **IMPORTANTE**: Este proyecto es una demo, proyecto base, para estructurar las pruebas de integración (AcceptanceTest) que se realizarán. Este proyecto es funcional yo consume la pet-store  API en su versión 3 (https://petstore3.swagger.io/api/v3), sin embargo, a continuación te contamos que debes modificar y configurar para comenzar en tu contexto de aplicación con las pruebas:
 - Ir al karate-config.js y modificar la `urlBase` por la url o endpoint de tu aplicación.
 - Ir al karate-config.js y modificar la `oasUrl` por el path y nombre de la deficnicón open Api de la API a testear.
-- Ir a los archivos .feature (src>test>resources>co.com.bancolombia) agregar tus escenarios, métodos de prueba, aserciones, y todo lo necesario para tus pruebas en particular.
+- Ir a los archivos .feature (src>test>resources>co.com.certificacion) agregar tus escenarios, métodos de prueba, aserciones, y todo lo necesario para tus pruebas en particular.
 
 Aquí se detalla la estructura que debe guiar las pruebas con Karate, es un ejemplo:
 
@@ -19,12 +19,12 @@ Aquí se detalla la estructura que debe guiar las pruebas con Karate, es un ejem
 src
 └── test
     ├── java
-    │   └── co.com.bancolombia
+    │   └── co.com.certificacion
     │       ├── TestParallel.java
     │       └── utils
     │           └── ValidatorTestUtils.java
     └── resources
-        ├── co.com.bancolombia
+        ├── co.com.certificacion
         │   ├── demo
         │   │   ├── demo.feature
         │   │   └── addPet.json

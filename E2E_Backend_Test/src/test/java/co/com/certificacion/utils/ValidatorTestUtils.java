@@ -1,4 +1,4 @@
-package co.com.bancolombia.utils;
+package co.com.certificacion.utils;
 
 import com.atlassian.oai.validator.OpenApiInteractionValidator;
 import com.atlassian.oai.validator.model.Request;
