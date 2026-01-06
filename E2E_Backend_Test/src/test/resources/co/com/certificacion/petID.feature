@@ -1,13 +1,25 @@
-Feature: Upload an image to Petstore
+Feature: Get a pet by ID from Petstore
 
   Background:
     * url 'https://petstore.swagger.io/v2'
 
-  Scenario: Upload an image for a pet
-    Given path 'pet', 1313, 'uploadImage'
+  Scenario: Get pet with ID 5
+    Given path 'pet', 5
     And header Accept = 'application/json'
-    And multipart field additionalMetadata = 'sdfsdf'
-    And multipart file file = { read: 'classpath:data/prueba.png', filename: 'prueba.png', contentType: 'image/png' }
-    When method post
+    When method get
     Then status 200
-    And match response.code == 200
+    And match response.id == 5
+
+
+  Scenario Outline: Get pet by ID
+    Given path 'pet', <id>
+    And header Accept = 'application/json'
+    When method get
+    Then status 200
+    And match response.id == <id>
+
+    Examples:
+      | id |
+      | 5  |
+      | 10 |
+      | 15 |
