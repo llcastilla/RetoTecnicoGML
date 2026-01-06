@@ -30,7 +30,7 @@ compileJava {
 }
 
 dependencies {
-
+    implementation 'net.serenity-bdd:serenity-ensure:4.0.12'
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
