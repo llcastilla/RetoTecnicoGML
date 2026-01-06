@@ -1,52 +1,119 @@
+plugins {
+    id 'java'
+}
+ext {
+    karateVersion = "1.4.1"
+    cucumberReportVersion = "5.10.1"
+    swaggerRequestValidatorVersion = "2.46.0"
+    commonsCodecVersion = "1.20.0"
+    rhinoVersion = "1.8.1"
+
+    jacksonVersion = "2.20"
+    jacksonVersion1 = "2.20.1"
+    logbackVersion = "1.5.21"
+
+    commonsIoVersion = "2.21.0"              // CVE-2024-47554 corregido
+    jsonSmartVersion = "2.6.0"              // CVE-2023-1370 corregido
+    jsoupVersion = "1.21.2"                 // CVE-2021-37714 corregido
+    snakeYamlVersion = "2.3"                // CVE-2022-1471, CVE-2022-25857 corregido
+
+    guavaVersion = "33.2.1-jre"             // CVE-2023-2976 corregido
+    jsonPathVersion = "2.9.0"               // Última estable (mitigar CVE-2023-51074)
+    commonsLang3Version = "3.19.0"          // CVE-2025-48924 corregido
+
+    owaspHtmlSanitizerVersion = "20240325.1"
+}
+
+allprojects {
+    configurations.configureEach {
+        resolutionStrategy {
+
+            force "org.apache.commons:commons-lang3:${commonsLang3Version}"
+            force "org.mozilla:rhino:1.8.1"
+            exclude group: "net.masterthought", module: "cucumber-reporting"
+            exclude group: "com.googlecode.owasp-java-html-sanitizer", module: "owasp-java-html-sanitizer"
+            force 'io.netty:netty-codec-http:4.2.9.Final'
+            force 'io.netty:netty-bom:4.2.9.Final'
+            force 'io.netty:netty-codec-http2:4.2.9.Final'
+            force 'io.netty:netty-handler:4.2.9.Final'
+            force 'io.netty:netty-codec:4.2.9.Final'
+            force 'io.netty:netty-common:4.2.9.Final'
+            force "com.fasterxml.jackson.core:jackson-core:${jacksonVersion1}"
+            force "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion1}"
+            force "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+            force "ch.qos.logback:logback-classic:${logbackVersion}"
+            force "ch.qos.logback:logback-core:${logbackVersion}"
+            force "commons-io:commons-io:${commonsIoVersion}"
+            force "net.minidev:json-smart:${jsonSmartVersion}"
+            force "org.jsoup:jsoup:${jsoupVersion}"
+            force "org.yaml:snakeyaml:${snakeYamlVersion}"
+            force "com.google.guava:guava:${guavaVersion}"
+            force "com.jayway.jsonpath:json-path:${jsonPathVersion}"
+            force "org.apache.commons:commons-lang3:${commonsLang3Version}"
+            force "org.mozilla:rhino:1.8.1"
+        }
+    }
+}
+
 repositories {
-    mavenLocal()
     mavenCentral()
-}
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven {url "https://plugins.gradle.org/m2/"}
-    }
-
-    dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:4.0.12")
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
-
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
-
-group 'ms_gestioninformacioncliente_test'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-tasks.withType(Test) {
-    maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 dependencies {
-    // Testing
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.slf4j:slf4j-simple:2.0.13'
-    testImplementation 'org.assertj:assertj-core:3.25.3'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
-
-    // Serenity BDD
-    implementation 'net.serenity-bdd:serenity-core:4.0.12'
-    implementation 'net.serenity-bdd:serenity-junit:4.0.12'
-    implementation 'net.serenity-bdd:serenity-cucumber:4.0.12'
-    implementation 'net.serenity-bdd:serenity-screenplay:4.0.12'
-    implementation 'net.serenity-bdd:serenity-screenplay-rest:4.0.12'
+    implementation 'io.netty:netty-codec-http:4.2.9.Final'
+    implementation 'io.netty:netty-bom:4.2.9.Final'
+    implementation 'io.netty:netty-codec-http2:4.2.9.Final'
+    implementation 'io.netty:netty-handler:4.2.9.Final'
+    implementation 'io.netty:netty-codec:4.2.9.Final'
+    implementation 'io.netty:netty-common:4.2.9.Final'
+    testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
+    testImplementation "net.masterthought:cucumber-reporting:${cucumberReportVersion}"
+    testImplementation "com.atlassian.oai:swagger-request-validator-core:${swaggerRequestValidatorVersion}"
+    testImplementation "commons-codec:commons-codec:${commonsCodecVersion}"
+    testImplementation "org.mozilla:rhino:${rhinoVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion1}"
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion1}"
+    testImplementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+    testImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    testImplementation "ch.qos.logback:logback-core:${logbackVersion}"
+    testImplementation "commons-io:commons-io:${commonsIoVersion}"
+    testImplementation "net.minidev:json-smart:${jsonSmartVersion}"
+    testImplementation "org.jsoup:jsoup:${jsoupVersion}"
+    testImplementation "org.yaml:snakeyaml:${snakeYamlVersion}"
+    testImplementation "com.google.guava:guava:${guavaVersion}"
+    testImplementation "com.jayway.jsonpath:json-path:${jsonPathVersion}"
+    testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+    implementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+    implementation "ch.qos.logback:logback-core:${logbackVersion}"
 }
 
-task variables(type: Test) {
-    systemProperty 'token', System.getProperty('token')
+configurations.configureEach {
+    resolutionStrategy {
+        force 'io.netty:netty-codec-http:4.2.9.Final'
+        force 'io.netty:netty-bom:4.2.9.Final'
+        force 'io.netty:netty-codec-http2:4.2.9.Final'
+        force 'io.netty:netty-handler:4.2.9.Final'
+        force 'io.netty:netty-codec:4.2.9.Final'
+        force 'io.netty:netty-common:4.2.9.Final'
+        force "com.fasterxml.jackson.core:jackson-core:${jacksonVersion1}"
+        force "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion1}"
+        force "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+        force "ch.qos.logback:logback-classic:${logbackVersion}"
+        force "ch.qos.logback:logback-core:${logbackVersion}"
+        force "commons-io:commons-io:${commonsIoVersion}"
+        force "net.minidev:json-smart:${jsonSmartVersion}"
+        force "org.jsoup:jsoup:${jsoupVersion}"
+        force "org.yaml:snakeyaml:${snakeYamlVersion}"
+        force "com.google.guava:guava:${guavaVersion}"
+        force "com.jayway.jsonpath:json-path:${jsonPathVersion}"
+        force "org.apache.commons:commons-lang3:${commonsLang3Version}"
+        force "org.mozilla:rhino:1.8.1"
+    }
 }
 
-gradle.startParameter.continueOnFailure = true
+test {
+    useJUnitPlatform()
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false }
+}
