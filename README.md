@@ -17,6 +17,19 @@ El objetivo principal es demostrar las buenas prácticas en la construcción de 
 - **Ejecución de pruebas:** JUnit / Cucumber
 - **Reportes:** Serenity Reports
 
+### 🔹 Back-End (API)
+- Karate DSL
+- Automatización de servicios REST
+- Validaciones de contrato y flujos funcionales
+
+---
+
+## 📌 Enfoque del reto técnico
+
+| Capa | Herramienta | Enfoque |
+|------|-------------|---------|
+| Front-End | Serenity BDD + Screenplay | Pruebas E2E con arquitectura limpia y orientada a negocio. |
+| Back-End | Karate DSL | Pruebas de API simples, rápidas y altamente legibles. |
 ---
 
 ## 📌 Estructura del proyecto
@@ -29,7 +42,7 @@ El proyecto está dividido en dos módulos principales:
     - Se definen escenarios en **Gherkin (Cucumber)** para mantener pruebas legibles y fáciles de entender.
 
 2. **Pruebas de Back-End (API)**
-    - Automatización de servicios REST utilizando Serenity Rest.
+    - Automatización de servicios REST utilizando Karate DSL.
     - Validación de códigos de estado HTTP y respuestas JSON.
     - Escenarios definidos en **Gherkin (Cucumber)** para documentar la intención de las pruebas.
 
@@ -63,11 +76,17 @@ Al finalizar la ejecución se genera el reporte Serenity en:
 target/site/serenity/index.html
 ```
 
+### 🔹 Reporte Karate
+Al finalizar la ejecución se genera el reporte Karate en:
+```
+target/karate-reports/karate-summary.html
+```
 ---
 
 ## 📂 Organización de carpetas
 
 ```bash
+Serenity BDD
 src
  └── test
       ├── java
@@ -78,6 +97,27 @@ src
       │    └── runners      # Configuración de ejecución
       └── resources
            └── features     # Escenarios en Gherkin
+```
+```bash
+Karate DSL
+│
+├── build.gradle                 # Si se integra con Gradle
+├── README.md
+│
+├── src
+│   └── test
+│        ├── java
+│        │    └── karate
+│        │         └── runners
+│        │              └── TestRunner.java          # Runner JUnit para Karate
+│        │
+│        └── resources
+│             └── karate
+│                  ├── login.feature
+│                  ├── logout.feature
+│                  ├── create-user.feature
+│                  ├── create-with-array.feature                          
+│              
 ```
 
 ---
