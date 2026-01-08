@@ -1,6 +1,6 @@
 # Reto Técnico – Automatización de Pruebas E2E y Backend
 
-Este proyecto contiene el desarrollo de un reto técnico orientado a la automatización de pruebas tanto de **Front-End (UI)** como de **Back-End (API)**, implementando el patrón **Screenplay** con el framework **Serenity BDD**.
+Este proyecto contiene el desarrollo de un reto técnico orientado a la automatización de pruebas tanto de **Front-End (UI)** como de **Back-End (API)**, implementando el patrón **Screenplay** con el framework **Serenity BDD** y con el framework de pruebas backend  **Karate DSL** .
 
 El objetivo principal es demostrar las buenas prácticas en la construcción de pruebas automáticas, asegurando **mantenibilidad, legibilidad y escalabilidad** de los casos de prueba.
 
