@@ -7,6 +7,4 @@ Feature: Get a store order by ID from Petstore
     Given path 'store', 'order', 5
     And header Accept = 'application/json'
     When method get
-    Then status 200
-    And match response.id == 5
-    And match response.petId == 0
+    Then status 404

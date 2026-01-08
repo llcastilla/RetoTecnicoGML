@@ -20,6 +20,6 @@ Feature: Get a pet by ID from Petstore
 
     Examples:
       | id |
-      | 5  |
-      | 10 |
-      | 15 |
+      | 2  |
+      | 7 |
+      | 9 |
